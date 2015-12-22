@@ -1,0 +1,24 @@
+# Site settings
+title: Linusdamyo's Blog
+email: linusdamyo@gmail.com
+description: > # this means to ignore newlines until "baseurl:"
+  Linusdamyo's Blog
+baseurl: "" # the subpath of your site, e.g. /blog/
+url: "http://linusdamyo.github.io" # the base hostname & protocol for your site
+twitter_username: linusdamyo
+github_username:  linusdamyo
+
+# Build settings
+markdown: redcarpet
+redcarpet:
+  extensions: ["no_intra_emphasis", "fenced_code_blocks", "autolink", "strikethrough", "superscript", "with_toc_data", "tables"]
+
+highlighter: pygments
+permalink: pretty
+
+safe: true
+lsi: true
+
+gems:
+  - jekyll-redirect-from
+  - jemoji
