@@ -108,8 +108,12 @@ git으로 옮기고나니 소스관리가 훨씬 수월해졌다. 이 좋은걸 
 - git log --all --grep='trunk@1676'
 > commit 메시지에서 특정 문자 검색
 
-- git remote add root@remote:/home/git/project.git
+- git remote add origin root@remote:/home/git/project.git
 > remote 서버 추가
+
+- git init --bare
+> remote 서버에 git 저장소를 만든다.
+> mkdir /home/git/project.git; git init --bare
 
 - git reset --hard HEAD , git pull
 > remote 에서 다시 받아서 덮어쓰기. 로컬 작업내용은 날아가므로 주의.
