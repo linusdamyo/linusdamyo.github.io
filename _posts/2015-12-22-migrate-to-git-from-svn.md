@@ -152,4 +152,4 @@ git으로 옮기고나니 소스관리가 훨씬 수월해졌다. 이 좋은걸 
 >> filter-branch 실행후 백업된 항목을 지운다.
 
 - git log --graph --all --decorate --color
->> 예쁘게 나온다. 한줄로 보고싶으면 --oneline 추가.
+> 예쁘게 나온다. 한줄로 보고싶으면 --oneline 추가.
