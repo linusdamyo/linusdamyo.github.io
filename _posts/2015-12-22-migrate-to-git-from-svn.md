@@ -24,7 +24,7 @@ ProGit의 [http://git-scm.com/book/ko/v2/Git으로-이전하기-Git:-범용-Clie
  git 으로 가져오기 싫은 디렉토리나 파일은 --ignore-path 옵션으로 빼버릴 수 있다.
 : {% highlight bash %}
   git svn clone file:///home/svn --authors-file=users.txt -s my_project --ignore-paths='A|B'
-  {% endhighlight %}
+{% endhighlight %}
 
 1. ProGit 내용과 다른 부분은 svn branch 들이 .git/refs/remotes/ 아래 생기지 않고, .git/packed-refs 파일에 저장되어 있었다.
  파일 안의 내용을 참고해서.git/refs/heads 에 그냥 각각 파일을 만들고, .git/packed-refs를 삭제했더니 똑같이 됐다. 그냥 둬도 무방한 것 같기도 하다.
@@ -34,7 +34,7 @@ ProGit의 [http://git-scm.com/book/ko/v2/Git으로-이전하기-Git:-범용-Clie
   git filter-branch --msg-filter '
     sed "s#git-svn-id: file:///home/src/trunk@#r#g"
   '
-  {% endhighlight %}
+{% endhighlight %}
 
 1. git remote 저장소를 추가하고 push까지.. 허무하리만큼 간단하다.
 
@@ -148,7 +148,7 @@ git으로 옮기고나니 소스관리가 훨씬 수월해졌다. 이 좋은걸 
         else
                 git commit-tree "$@";
         fi' HEAD
-  {% endhighlight %}
+{% endhighlight %}
 
 - git update-ref -d refs/original/refs/heads/master
 : > filter-branch 실행후 백업된 항목을 지운다.
