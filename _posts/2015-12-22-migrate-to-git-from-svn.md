@@ -22,19 +22,19 @@ ProGit의 [http://git-scm.com/book/ko/v2/Git으로-이전하기-Git:-범용-Clie
 1. svnadmin 으로 로컬 서버에 svn 저장소를 만들고, svnsync 로 리모트 서버의 svn 저장소를 가져온다.
 1. git init 후, git svn clone 명령어로 git으로 옮긴다. svn 의 revision 정보가 필요해서, --no-metadata 옵션은 적용하지 않았다.
  git 으로 가져오기 싫은 디렉토리나 파일은 --ignore-path 옵션으로 빼버릴 수 있다.
-```
- git svn clone file:///home/svn --authors-file=users.txt -s my_project --ignore-paths='A|B'
-```
+: {% highlight bash %}
+  git svn clone file:///home/svn --authors-file=users.txt -s my_project --ignore-paths='A|B'
+  {% endhighlight %}
 
 1. ProGit 내용과 다른 부분은 svn branch 들이 .git/refs/remotes/ 아래 생기지 않고, .git/packed-refs 파일에 저장되어 있었다.
  파일 안의 내용을 참고해서.git/refs/heads 에 그냥 각각 파일을 만들고, .git/packed-refs를 삭제했더니 똑같이 됐다. 그냥 둬도 무방한 것 같기도 하다.
 1. 그 다음, .gitignore 파일을 모든 commit 에 적용하고 싶었는데, [http://stackoverflow.com/questions/7295511/how-to-add-a-file-to-the-first-commit-on-a-git-repo](http://stackoverflow.com/questions/7295511/how-to-add-a-file-to-the-first-commit-on-a-git-repo) 에서 해결. 
 1. commit log 에 svn revision 정보가 나오는건 좋은데, 좀 장황해서, 위에서 사용한 git filter-branch 명령으로 간단하게 수정했다.
-```
-git filter-branch --msg-filter '
-sed "s#git-svn-id: file:///home/src/trunk@#r#g"
-'
-```
+: {% highlight bash %}
+  git filter-branch --msg-filter '
+    sed "s#git-svn-id: file:///home/src/trunk@#r#g"
+  '
+  {% endhighlight %}
 
 1. git remote 저장소를 추가하고 push까지.. 허무하리만큼 간단하다.
 
@@ -62,81 +62,83 @@ git으로 옮기고나니 소스관리가 훨씬 수월해졌다. 이 좋은걸 
 마지막으로 자주 사용하는 git 명령어들을 정리해봤다.
 
 - git add NEW_FILE
->> 파일을 stage 상태로 만든다.
+: > 파일을 stage 상태로 만든다.
 
 - git commit
->> 당연히 commit
+: > 당연히 commit
 
 - git commit --amend
->> commit 을 했는데, 빼먹은게 있는 경우, git add 하고 git commit --amend 하면 기존 commit과 합쳐준다. 혹은 comment를 고칠때..
+: > commit 을 했는데, 빼먹은게 있는 경우, git add 하고 git commit --amend 하면 기존 commit과 합쳐준다. 혹은 comment를 고칠때..
 
 - git commit --amend --author "YOU \<YOU&#64;email.com\>"
->> commit 유저명을 바꾼다. 다른 사람이 svn 으로 업데이트한 내용을 받아와서, git 에 적용.
+: > commit 유저명을 바꾼다. 다른 사람이 svn 으로 업데이트한 내용을 받아와서, git 에 적용.
 
 - git checkout -b NEW_BRANCH
->> branch를 생성하고, 그 branch를 checkout 한다.
+: > branch를 생성하고, 그 branch를 checkout 한다.
 
 - git checkout -b NEW_BRANCH remotes/origin/NEW_BRANCH
->> remote branch 를 local 로 checkout
+: > remote branch 를 local 로 checkout
 
 - git merge BRANCH
->> branch 에서 작업한 내용을 master 에 반영할때. git checkout master 먼저 하고.
+: > branch 에서 작업한 내용을 master 에 반영할때. git checkout master 먼저 하고.
 
 - git cherry-pick COMMIT-ID
->> 특정 commit 만 골라서 반영해야 할 경우.
+: > 특정 commit 만 골라서 반영해야 할 경우.
 
 - git reset HEAD~1
->> merge를 잘못했거나 했을때, commit 을 되돌린다. stage 상태의 파일도 원복한다.
+: > merge를 잘못했거나 했을때, commit 을 되돌린다. stage 상태의 파일도 원복한다.
 
 - git status
->> 현재 상태 보기
+: > 현재 상태 보기
 
 - git diff
->> 전체 파일 diff
+: > 전체 파일 diff
 
 - git diff --cached
->> add 한 파일만 diff 할때 사용. 현재 수정중인 파일은 제외하고 보여준다.
+: > add 한 파일만 diff 할때 사용. 현재 수정중인 파일은 제외하고 보여준다.
 
 - git show COMMIT-ID
->> commit 된 내용 확인
+: > commit 된 내용 확인
 
 - git branch -a
->> 모든 branch 리스트를 본다.
+: > 모든 branch 리스트를 본다.
 
 - git push origin --all
->> remote 서버에 push
+: > remote 서버에 push
 
 - git push -f origin
->> rebase 하고 에러났을때, 강제 push. 혼자 쓸때만 사용하자.
+: > rebase 하고 에러났을때, 강제 push. 혼자 쓸때만 사용하자.
 
 - git log --all --grep='trunk@1676'
->> commit 메시지에서 특정 문자 검색
+: > commit 메시지에서 특정 문자 검색
 
 - git remote add origin root@remote:/home/git/project.git
->> remote 서버 추가
+: > remote 서버 추가
 
 - git init --bare
->> remote 서버에 git 저장소를 만든다.
->> mkdir /home/git/project.git; git init --bare
+: > remote 서버에 git 저장소를 만든다.
+: ```
+   mkdir /home/git/project.git; git init --bare
+  ```
 
 - git reset --hard HEAD , git pull
->> remote 에서 다시 받아서 덮어쓰기. 로컬 작업내용은 날아가므로 주의.
+: > remote 에서 다시 받아서 덮어쓰기. 로컬 작업내용은 날아가므로 주의.
 
 - git stash
->> 작업중인 내용을 임시저장.
+: > 작업중인 내용을 임시저장.
 
 - git stash list
->> stash 한 리스트
+: > stash 한 리스트
 
 - git stash apply --index
->> stash 한걸 적용. commit 상태까지.
+: > stash 한걸 적용. commit 상태까지.
 
 - git stash drop stash{0}
->> stash 한걸 지운다.
+: > stash 한걸 지운다.
 
 - git filter-branch
->> commit log 의 전체 변경이 필요할때.. 아래는 전체 유저명 변경 예제
-  {% highlight bash %}
+: > commit log 의 전체 변경이 필요할때.. 아래는 전체 유저명 변경 예제
+: {% highlight bash %}
   git filter-branch -f --commit-filter '
         if [ "$GIT_AUTHOR_NAME" = "OLD" ];
         then
@@ -149,8 +151,7 @@ git으로 옮기고나니 소스관리가 훨씬 수월해졌다. 이 좋은걸 
   {% endhighlight %}
 
 - git update-ref -d refs/original/refs/heads/master
->> filter-branch 실행후 백업된 항목을 지운다.
+: > filter-branch 실행후 백업된 항목을 지운다.
 
 - git log --graph --all --decorate --color
-
-> 예쁘게 나온다. 한줄로 보고싶으면 --oneline 추가.
+: > 예쁘게 나온다. 한줄로 보고싶으면 --oneline 추가.

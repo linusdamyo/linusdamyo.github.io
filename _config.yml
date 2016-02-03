@@ -11,15 +11,15 @@ github_username:  linusdamyo
 # Build settings
 #markdown: redcarpet
 #markdown: kramdown
-kramdown:
-  input: GFM
+#kramdown:
+#  input: GFM
 #kramdown:
 #  input: GFM
 
 #redcarpet:
 #  extensions: ["no_intra_emphasis", "fenced_code_blocks", "autolink", "strikethrough", "superscript", "with_toc_data", "tables"]
 
-highlighter: pygments
+#highlighter: pygments
 permalink: pretty
 
 safe: true
