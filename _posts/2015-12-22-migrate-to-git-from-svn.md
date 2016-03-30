@@ -109,6 +109,12 @@ git으로 옮기고나니 소스관리가 훨씬 수월해졌다. 이 좋은걸 
 - git push -f origin
 : > rebase 하고 에러났을때, 강제 push. 혼자 쓸때만 사용하자.
 
+- git push origin --delete serverfix
+: > remote branch 삭제
+
+- git fetch -p
+: > remote branch 삭제 후, 반영이 안된 다른 서버에서 삭제된 remote branch 의 refs 를 지운다. remotes/origin/serverfix
+
 - git log --all --grep='trunk@1676'
 : > commit 메시지에서 특정 문자 검색
 
