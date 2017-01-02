@@ -8,9 +8,10 @@ categories: docker
 - CentOS 7
 
 ## 준비
+- git, docker는 yum 으로 간단히 설치
 - yum install git
 - yum install docker
-- git, docker는 yum 으로 간단히 설치
+- service docker start
 
 ## 실패
 - gitlab 설치를 위해 구글링 결과 여기저기 따라해봤지만 대부분 실패했다.
