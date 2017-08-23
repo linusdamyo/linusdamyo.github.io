@@ -1,0 +1,7 @@
+Gemfile 설정이 바뀔지 모르니 잘 확인하자.  
+
+* 설치  
+  bundle update
+
+* 서비스 시작  
+  jekyll serve
