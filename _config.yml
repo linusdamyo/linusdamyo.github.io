@@ -25,7 +25,7 @@ permalink: pretty
 safe: true
 lsi: true
 
-gems:
+plugins:
   - jekyll-redirect-from
   - jemoji
   - pygments
