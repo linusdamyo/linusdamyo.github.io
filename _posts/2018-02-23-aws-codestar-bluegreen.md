@@ -11,6 +11,7 @@ categories: aws
 ### AWS CodeStar 생성
 
 > AWS CodeStar는 미리 정해진 템플릿으로 코드저장소부터 배포까지 한번에 생성하고 관리할 수 있게 만들어져 있습니다.  
+
 1. console로 들어가서 Create a new project를 누릅니다.
 1. 원하는 템플릿을 고릅니다. Web service, node.js, Amazon EC2 를 선택합니다.
 1. Project name을 설정합니다. 코드저장소는 CodeCommit을 사용합니다.
@@ -72,6 +73,7 @@ CodeDeploy설정을 보면, In-place 배포로 설정되어 있습니다.
 ### 마치며..
 
 > CodeStar를 이용하면, CI/CD 구성을 손쉽게 할 수 있습니다. 단, Blue/Green 배포 설정을 하다가 꽤 많은 삽질을 했었는데, 크게 아래 두가지 문제가 있었습니다.
+
 1. Auto Scaling Group 설정을 해야해서, 별도로 Auto Scaling Group을 생성하고 했었는데, 이미 만들어진 EC2에서 새롭게 만들어야 했습니다.
 1. 기본으로 설정된 In-place 보다 Blue/Green에서 필요한 권한이 더 있었습니다. IAM Role에 CodeDeploy 쪽에 추가로 권한을 넣어서 해결했습니다.
 
